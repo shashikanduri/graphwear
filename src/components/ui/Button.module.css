@@ -1,0 +1,86 @@
+.buttonContainer .btnPrimary {
+  border-radius: 25px;
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+  border: none;
+  margin: 0 5px;
+  height: 40px;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  &:hover {
+    background-color: #1d948f;
+  }
+}
+
+.buttonContainer .btnSecondary {
+  border-radius: 25px;
+  color: var(--color-disabled_text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-secondary);
+  margin: 0 5px;
+  height: 40px;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-disabled_text);
+  }
+}
+
+.buttonContainer .btnDisabled {
+  border-radius: 25px;
+  background-color: var(--color-disabled);
+  border: none;
+  margin: 0 5px;
+  height: 40px;
+  width: 120px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  color: var(--color-disabled_text);
+  cursor: not-allowed;
+}
+
+/* Small devices  */
+@media screen and (max-width: 768px) {
+  .buttonContainer .btnCommon {
+    white-space: normal; /* Allow text to wrap */
+    text-align: center; /* Center text */
+    overflow-wrap: break-word; /* Break long words if necessary */
+    padding: 5px; /* Add padding for better appearance */
+
+    border-radius: 25px;
+    border: none;
+    margin: 0 5px;
+    height: 30px;
+    width: 100px;
+    max-width: 200px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+  }
+  .buttonContainer .btnPrimary {
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    &:hover {
+      background-color: #1d948f;
+    }
+  }
+  .buttonContainer .btnSecondary {
+    color: var(--color-disabled_text);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-secondary);
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-disabled_text);
+    }
+  }
+  .buttonContainer .btnDisabled {
+    color: var(--color-disabled_text);
+    background-color: var(--color-disabled);
+  }
+}

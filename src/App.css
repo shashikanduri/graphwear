@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1500px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  size: 18cm 27cm;
+}
+
+.flash-edited {
+  animation-duration: 0.7s;
+  animation-name: flash;
+}
+
+
+@keyframes flash {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: yellow;
+    /* background-color: #c3fdfa; */
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.centerAlignRowAndColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgrndStrip {
+  background-color: #035157;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+.formError {
+  text-align: right;
+  margin-top: 0;
+  font-size: 13px;
+  color: #9f3323;
+  padding-right: 12px;
+}
+
+/* Default scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  width: 10px; /* Expands on hover */
+  height: 10px; /* Expands on hover */
+}

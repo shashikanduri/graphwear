@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#root {
+    height: 100vh;
+    display: flex;
+}
+body {
+    margin: 0;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+pre {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif !important;
+}
+
+
+/*
+ The below 2 styles are required to hide the arrows in the numeric input field
+*/
+
+
+/* For chrome and other browsers */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* For Mozilla Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

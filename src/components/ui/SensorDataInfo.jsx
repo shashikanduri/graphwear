@@ -6,8 +6,7 @@ export const SensorDataInfo = ({ data }) => {
   console.log(data);
   const RenderData = (title, key, className = "") => {
     const isNotEmpty = isNotEmptyOrNull(data, key);
-    console.log(data?.[key]);
-
+    
     return (
       <div className={`flex flex-col ${className}`}>
         <h3 className="font-bold">{formatLabel(title)}</h3>
@@ -16,7 +15,7 @@ export const SensorDataInfo = ({ data }) => {
             isNotEmpty ? "text-gray-500" : "text-red-600"
           } whitespace-nowrap`}
         >
-          {isNotEmpty ? data?.[key] : "Missing"}
+          {isNotEmpty ? `${data?.[key]}` : "Missing"}
         </p>
       </div>
     );
@@ -25,9 +24,10 @@ export const SensorDataInfo = ({ data }) => {
   return (
     <MainContainer header="Data Packet Information">
       <div className="grid xl:grid-cols-[repeat(4,1fr)] min-[1092px]:grid-cols-[repeat(3,1fr)] sm:grid-cols-[repeat(2,1fr)] gap-x-3 gap-y-0 ">
-        {RenderData("User", "user_id")}
+        {RenderData("User", "user_name")}
         {RenderData("Sensor", "sensor_id")}
-        
+        {RenderData("Timestamp", "timestamp")}
+
         <hr className="col-[1/-1] my-2" />
 
         {RenderData("Lactate (Raw 1)", "raw1")}

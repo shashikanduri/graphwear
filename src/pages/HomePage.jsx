@@ -20,7 +20,7 @@ const WaterSystemPage = () => {
       (querySnapshot) => {
         const data = querySnapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
         setSensorData(data);
         setIsError(false);
@@ -43,31 +43,32 @@ const WaterSystemPage = () => {
 
   const columns = [
     {
-      accessorKey: "user_id",
-      header: "User ID",
-      size: 50,
+      accessorKey: "user_name",
+      header: "User Name",
+      size: 50
     },
     {
       accessorKey: "sensor_id",
-      header: "Sensor",
+      header: "Sensor"
     },
     {
       accessorKey: "raw1",
-      header: "Lactate(Raw 1)",
+      header: "Lactate(Raw 1)"
     },
     {
       accessorKey: "raw2",
-      header: "Lactate(Raw 2)",
+      header: "Lactate(Raw 2)"
     },
     {
       accessorKey: "raw3",
-      header: "Lactate(Raw 3)",
+      header: "Lactate(Raw 3)"
     },
     {
       accessorKey: "timestamp",
-      header: "Timestamp",
+      header: "Timestamp"      
     }
   ];
+  
 
   return (
     <>

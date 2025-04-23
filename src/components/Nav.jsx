@@ -4,7 +4,6 @@ import { FaCircleUser } from "react-icons/fa6";
 const Nav = () => {
 
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
-  const handleNav = () => setShowHamburgerMenu((prev) => !prev);
 
   return (
     <>
@@ -22,7 +21,7 @@ const Nav = () => {
                 <li className="lg:block hidden">
                   <img
                     src="/graphwear-logo.png"
-                    alt="PFAS logo horizontal"
+                    alt="Graphwear logo horizontal"
                     className="h-[67px] w-[90px]"
                   />
                 </li>

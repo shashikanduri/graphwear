@@ -11,7 +11,7 @@ const LazyWaterSystemPage = lazy(() =>
 const App = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/graphwear",
       element:<RootLayout />,
       children:[
         {

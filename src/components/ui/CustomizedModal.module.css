@@ -12,12 +12,13 @@
 /* common properties */
 .modal {
   position: fixed;
-  top: 50%; /* Vertically center */
-  left: 50%; /* Horizontally center */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Center both horizontally and vertically */
+  top: 50%;
+  /* Vertically center */
+  left: 50%;
+  /* Horizontally center */
+  transform: translate(-50%,
+      -50%);
+  /* Center both horizontally and vertically */
   z-index: 100;
   border-radius: 3px;
   background: var(--color-white);
@@ -45,6 +46,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 5px 0px;
+
   .headerTitle {
     color: var(--color-primary);
     font-size: 28px;
@@ -62,16 +64,32 @@
   justify-content: end;
 }
 
+@media (max-width: 1281px) {
+  .modalFull {
+    height: 70%;
+    width: auto;
+  }
+
+  .content {
+    overflow-y: auto;
+    * {
+      font-size: x-small;
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .modalHalf {
     width: 90%;
   }
 }
+
 @media (max-width: 650px) {
   .modalMedium {
     width: 90%;
   }
 }
+
 @media (max-width: 850px) {
   .modalFull {
     width: 90%;

@@ -3,8 +3,10 @@ import { formatLabel } from "../../utility/Utility";
 import MainContainer from "../container/MainContainer";
 
 export const SensorDataInfo = ({ data }) => {
+  console.log(data);
   const RenderData = (title, key, className = "") => {
     const isNotEmpty = isNotEmptyOrNull(data, key);
+    console.log(data?.[key]);
 
     return (
       <div className={`flex flex-col ${className}`}>
@@ -48,14 +50,14 @@ export const SensorDataInfo = ({ data }) => {
         {RenderData("Flag 4", "flag4")}
         {RenderData("Flag 5", "flag5")}
         {RenderData("Flag 6", "flag6")}
+        {RenderData("Gain 0", "gain0")}
         {RenderData("Gain 1", "gain1")}
         {RenderData("Gain 2", "gain2")}
-        {RenderData("Gain 3", "gain3")}
-        {RenderData("Connection Status", "connection_status_flag")}
-        {RenderData("Connection Status", "connection_status_flag")}
-        {RenderData("Connection Status", "connection_status_flag")}
-        {RenderData("Connection Status", "connection_status_flag")}
-        {RenderData("Connection Status", "connection_status_flag")}
+        {RenderData("Offset 0", "offset0")}
+        {RenderData("Offset 1", "offset1")}
+        {RenderData("offset 2", "offset2")}
+        {RenderData("Header 1", "header1")}
+        {RenderData("Header 2", "header2")}
 
       </div>
     </MainContainer>

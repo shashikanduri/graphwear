@@ -38,7 +38,7 @@ const WaterSystemPage = () => {
 
 
   const onRowClick = (data) => {
-    setModal({content: <SensorDataInfo data={data} />, size: "modalFull"})
+    setModal({content: <SensorDataInfo data={data.original} />, size: "modalFull"})
   };
 
   const columns = [
@@ -89,7 +89,6 @@ const WaterSystemPage = () => {
         <DisplayTablePagination
           tableData={sensorData}
           columns={columns}
-          initialState={{ sorting: [{ id: "ps_code", desc: false }] }}
           maxHeight="420px"
           onRowClick={onRowClick}
         />

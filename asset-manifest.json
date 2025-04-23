@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/graphwear-assesment/static/css/main.7d7a89f2.css",
+    "main.js": "/graphwear-assesment/static/js/main.8b697976.js",
+    "static/js/704.ecbbb858.chunk.js": "/graphwear-assesment/static/js/704.ecbbb858.chunk.js",
+    "static/js/8.3524cdda.chunk.js": "/graphwear-assesment/static/js/8.3524cdda.chunk.js",
+    "index.html": "/graphwear-assesment/index.html",
+    "main.7d7a89f2.css.map": "/graphwear-assesment/static/css/main.7d7a89f2.css.map",
+    "main.8b697976.js.map": "/graphwear-assesment/static/js/main.8b697976.js.map",
+    "704.ecbbb858.chunk.js.map": "/graphwear-assesment/static/js/704.ecbbb858.chunk.js.map",
+    "8.3524cdda.chunk.js.map": "/graphwear-assesment/static/js/8.3524cdda.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d7a89f2.css",
+    "static/js/main.8b697976.js"
+  ]
+}

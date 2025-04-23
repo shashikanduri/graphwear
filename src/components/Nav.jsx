@@ -20,7 +20,7 @@ const Nav = () => {
               <ul className="w-full py-2 text-base font-medium text-primary lg:flex lg:justify-between">
                 <li className="lg:block hidden">
                   <img
-                    src="/graphwear-logo.png"
+                    src="/graphwear/graphwear-logo.png"
                     alt="Graphwear logo horizontal"
                     className="h-[67px] w-[90px]"
                   />

@@ -6,6 +6,7 @@ import { LoadingSpinner } from "../components/LoadingSpinner";
 import MainContainer from "../components/container/MainContainer";
 import DisplayTablePagination from "../components/tables/DisplayTablePagination";
 import { SensorDataInfo } from "../components/ui/SensorDataInfo";
+import { formatDate, DATE_TIME_FORMAT_1, customDateFilter } from "../utility/Utility"
 
 const WaterSystemPage = () => {
   const { setModal } = useOutletContext();
@@ -65,7 +66,18 @@ const WaterSystemPage = () => {
     },
     {
       accessorKey: "timestamp",
-      header: "Timestamp"      
+      header: "Timestamp",
+      Cell: ({ cell }) => {
+        const value = cell.getValue();
+        if (!value)
+          return (
+            <p className={`px-.5 font-normal text-red-600 whitespace-nowrap`}>
+              Missing
+            </p>
+          );
+        else return formatDate(value, DATE_TIME_FORMAT_1);
+      },
+      filterFn: customDateFilter,  
     }
   ];
   

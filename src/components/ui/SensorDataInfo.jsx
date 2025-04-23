@@ -1,12 +1,16 @@
 import { isNotEmptyOrNull } from "../../utility/Utility";
 import { formatLabel } from "../../utility/Utility";
 import MainContainer from "../container/MainContainer";
+import { formatDate, DATE_TIME_FORMAT_1 } from "../../utility/Utility"
 
 export const SensorDataInfo = ({ data }) => {
-  console.log(data);
   const RenderData = (title, key, className = "") => {
     const isNotEmpty = isNotEmptyOrNull(data, key);
     
+    if (key === "timestamp"){
+      data[key] = formatDate(data[key], DATE_TIME_FORMAT_1);
+    }
+
     return (
       <div className={`flex flex-col ${className}`}>
         <h3 className="font-bold">{formatLabel(title)}</h3>

@@ -1,5 +1,8 @@
 import { createTheme } from "@mui/material";
 
+export const DATE_TIME_FORMAT_1 = "MM/dd/yyyy HH:mm:ss";
+export const DATE_FORMAT_1 = "yyyy-MM-dd";
+export const DATE_FORMAT_2 = "MM/dd/yyyy";
 
 export const formatLabel = (label) => {
   const match = label.match(/(.*) \((.*)\)/);
@@ -110,4 +113,48 @@ export const isNotEmptyOrNull = (obj, key) => {
 
   // For other types, consider them as not empty
   return true;
+};
+
+export const customDateFilter = (row, columnId, filterValue) => {
+  const cellValue = row.getValue(columnId);
+  return cellValue?.includes(filterValue) ?? false;
+};
+
+export const formatDate = (inputDateString, type) => {
+  if (!inputDateString) return "";
+  const dateObject = new Date(inputDateString);
+
+  // Adjust for time zone offset
+  const userTimezoneOffset = dateObject.getTimezoneOffset() * 60000;
+  const localDateObject = new Date(dateObject.getTime() + userTimezoneOffset);
+
+  if (type === DATE_TIME_FORMAT_1)
+    return `${(localDateObject.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}/${localDateObject
+      .getDate()
+      .toString()
+      .padStart(2, "0")}/${localDateObject.getFullYear()} ${localDateObject
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${localDateObject
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}:${localDateObject
+      .getSeconds()
+      .toString()
+      .padStart(2, "0")}`;
+  else if (type === DATE_FORMAT_1)
+    return `${localDateObject.getFullYear()}-${(localDateObject.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${localDateObject
+      .getDate()
+      .toString()
+      .padStart(2, "0")}`;
+  else if (type === DATE_FORMAT_2)
+    return localDateObject.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
 };

@@ -1,5 +1,7 @@
 import { Box, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material";
+import { CSVLink } from "react-csv";
+
 import {
   MaterialReactTable,
   useMaterialReactTable,
@@ -165,23 +167,37 @@ const DisplayTablePagination = ({
       );
     },
 
-    renderTopToolbarCustomActions: () => {
+    renderTopToolbarCustomActions: ({ table }) => {
+      const filteredData = table.getFilteredRowModel().rows.map(row => row.original);
+    
       return (
-        topButton.showTopButton && (
-          <div
-            className="flex flex-row items-center justify-center gap-2 h-[39.94px] cursor-pointer"
-            onClick={topButton.handleTopButton}
+        <div className="flex items-center gap-4">
+          {topButton.showTopButton && (
+            <div
+              className="flex flex-row items-center justify-center gap-2 h-[39.94px] cursor-pointer"
+              onClick={topButton.handleTopButton}
+            >
+              <input
+                type="checkbox"
+                className="cursor-pointer"
+                checked={topButton.value}
+                readOnly
+              />
+              <span className="text-sm text-primary">(Select All)</span>
+            </div>
+          )}
+          
+          <CSVLink
+            data={filteredData}
+            filename="filtered_table_data.csv"
+            className="bg-blue-500 hover:bg-blue-600 text-white text-sm px-3 py-1.5 rounded"
           >
-            <input
-              type="checkbox"
-              className="cursor-pointer"
-              checked={topButton.value}
-            />
-            <span className="text-sm text-primary">(Select All)</span>
-          </div>
-        )
+            Download CSV
+          </CSVLink>
+        </div>
       );
     },
+    
 
     //row action
     ...(onRowClick && {

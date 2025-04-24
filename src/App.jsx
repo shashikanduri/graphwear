@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import WaterSystemRootLayoutPage from "./components/layout/HomePageLayout";
 import RootLayout from "./components/layout/RootLayout";
 import { SuspenseContainer } from "./components/container/SuspenseContainer";
@@ -22,7 +23,9 @@ const App = () => {
               index: true,
               element: (
                 <SuspenseContainer>
-                  <LazyWaterSystemPage />
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <LazyWaterSystemPage />
+                  </LocalizationProvider>
                 </SuspenseContainer>
               )
             }

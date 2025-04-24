@@ -19,11 +19,18 @@ const WaterSystemPage = () => {
     const unsubscribe = onSnapshot(
       collection(db, "lactate_data"),
       (querySnapshot) => {
-        const data = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setSensorData(data);
+        const newData = [];
+
+        // adding new records to the top
+        querySnapshot.docChanges().forEach((change) => {
+          const docData = { id: change.doc.id, ...change.doc.data() };
+  
+          if (change.type === "added") {
+            newData.unshift(docData);
+          }
+        });
+  
+        setSensorData((prevData) => [...newData, ...prevData]);
         setIsError(false);
         setIsLoading(false);
       },
@@ -34,14 +41,16 @@ const WaterSystemPage = () => {
       }
     );
   
-    return () => unsubscribe(); // Clean up on unmount
+    return () => unsubscribe();
   }, []);
+  
 
-
+  // opens modal
   const onRowClick = (data) => {
     setModal({content: <SensorDataInfo data={data.original} />, size: "modalFull"})
   };
 
+  // columns for the table
   const columns = [
     {
       accessorKey: "user_name",

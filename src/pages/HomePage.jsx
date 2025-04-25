@@ -135,7 +135,7 @@ const WaterSystemPage = () => {
             />
           </div>
         </div>
-        <h3 className="text-lg text-black mt-8 pb-4 text-center">Lactate (Channel 1) : <b className="pb-4">{latestData?.ohm1 ?? ""}</b></h3>
+        <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 1)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
   
         <hr className="border-t border-gray-300 my-8 w-full" />
   
@@ -159,7 +159,7 @@ const WaterSystemPage = () => {
             />
           </div>
         </div>
-        <h3 className="text-lg text-black mt-8 pb-4 text-center">Lactate (Channel 2) : <b className="pb-4">{latestData?.ohm1 ?? ""}</b></h3>
+        <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 2)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
   
         <hr className="border-t border-gray-300 my-8 w-full" />
   
@@ -183,7 +183,7 @@ const WaterSystemPage = () => {
             />
           </div>
         </div>
-        <h3 className="text-lg text-black mt-8 pb-4 text-center">Lactate (Channel 3) : <b className="pb-4">{latestData?.ohm1 ?? ""}</b></h3>
+        <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 3)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
 
       </React.Fragment>
     );

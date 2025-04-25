@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/graphwear/static/css/main.f3d9b9f3.css",
-    "main.js": "/graphwear/static/js/main.cc20c873.js",
-    "static/js/704.e2aff24f.chunk.js": "/graphwear/static/js/704.e2aff24f.chunk.js",
-    "static/js/5.180e0b00.chunk.js": "/graphwear/static/js/5.180e0b00.chunk.js",
+    "main.css": "/graphwear/static/css/main.085b6c2d.css",
+    "main.js": "/graphwear/static/js/main.5173d498.js",
+    "static/js/689.9887e258.chunk.js": "/graphwear/static/js/689.9887e258.chunk.js",
+    "static/js/657.7d6a3ae3.chunk.js": "/graphwear/static/js/657.7d6a3ae3.chunk.js",
     "index.html": "/graphwear/index.html",
-    "main.f3d9b9f3.css.map": "/graphwear/static/css/main.f3d9b9f3.css.map",
-    "main.cc20c873.js.map": "/graphwear/static/js/main.cc20c873.js.map",
-    "704.e2aff24f.chunk.js.map": "/graphwear/static/js/704.e2aff24f.chunk.js.map",
-    "5.180e0b00.chunk.js.map": "/graphwear/static/js/5.180e0b00.chunk.js.map"
+    "main.085b6c2d.css.map": "/graphwear/static/css/main.085b6c2d.css.map",
+    "main.5173d498.js.map": "/graphwear/static/js/main.5173d498.js.map",
+    "689.9887e258.chunk.js.map": "/graphwear/static/js/689.9887e258.chunk.js.map",
+    "657.7d6a3ae3.chunk.js.map": "/graphwear/static/js/657.7d6a3ae3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3d9b9f3.css",
-    "static/js/main.cc20c873.js"
+    "static/css/main.085b6c2d.css",
+    "static/js/main.5173d498.js"
   ]
 }

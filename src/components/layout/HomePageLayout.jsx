@@ -1,9 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
 import { Outlet } from "react-router-dom";
 import CustomizedModal from "../ui/CustomizedModal";
+import { db } from "../../firebase";
 
 const WaterSystemRootLayoutPage = (props) => {
   const [modal, setModal] = useState(null);
+  const [users, setAllUsers] = useState([])
+
+  useEffect(() => {
+    const unsubscribeAllUsers = onSnapshot(
+      collection(db, "users"),
+      (snapshot) => {
+        const allUsers = new Set();
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          if (data.user_name) {
+            allUsers.add(data.user_name);
+          }
+        });
+        setAllUsers(Array.from(allUsers));
+      },
+      (error) => {
+        console.error("Error fetching all users:", error);
+      }
+    );
+  
+    return () => {
+      if (unsubscribeAllUsers) unsubscribeAllUsers();
+    };
+  }, []);
 
   return (
     <section className="w-full">
@@ -26,6 +52,7 @@ const WaterSystemRootLayoutPage = (props) => {
         <Outlet
           context={{
             setModal,
+            users
           }}
         />
       </section>

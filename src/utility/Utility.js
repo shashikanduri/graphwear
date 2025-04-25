@@ -158,3 +158,21 @@ export const formatDate = (inputDateString, type) => {
       day: "2-digit",
     });
 };
+
+
+export const downloadCSV = (sensorId, data) => {
+  if (!data.length) return;
+
+  const headers = Object.keys(data[0]);
+  const rows = data.map(row => headers.map(h => JSON.stringify(row[h] ?? "")));
+
+  const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.setAttribute("download", `${sensorId}_data.csv`);
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};

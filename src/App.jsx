@@ -5,7 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import WaterSystemRootLayoutPage from "./components/layout/HomePageLayout";
 import RootLayout from "./components/layout/RootLayout";
 import { SuspenseContainer } from "./components/container/SuspenseContainer";
-const LazyWaterSystemPage = lazy(() =>
+const LazyHomePage = lazy(() =>
   import("./pages/HomePage")
 );
 
@@ -24,7 +24,7 @@ const App = () => {
               element: (
                 <SuspenseContainer>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <LazyWaterSystemPage />
+                    <LazyHomePage />
                   </LocalizationProvider>
                 </SuspenseContainer>
               )

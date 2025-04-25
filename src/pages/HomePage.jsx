@@ -120,7 +120,7 @@ const WaterSystemPage = () => {
               <span>
                 <FaDownload
                   className="cursor-pointer"
-                  onClick={() => downloadCSV(sensorId, chartData)}
+                  onClick={() => downloadCSV(sensorId, chartData, startTime, endTime)}
                 />
               </span>
             </Tooltip>
@@ -348,7 +348,7 @@ const WaterSystemPage = () => {
 
         <button
           onClick={() => {
-            downloadCSV("combined_sensor_data", sensorData);
+            downloadCSV("combined_sensor_data", sensorData, startTime, endTime)
           }}
           className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
         >

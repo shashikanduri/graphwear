@@ -159,12 +159,24 @@ export const formatDate = (inputDateString, type) => {
     });
 };
 
-
-export const downloadCSV = (sensorId, data) => {
+export const downloadCSV = (sensorId, data, startTime = null, endTime = null) => {
   if (!data.length) return;
 
-  const headers = Object.keys(data[0]);
-  const rows = data.map(row => headers.map(h => JSON.stringify(row[h] ?? "")));
+  const start = startTime ? new Date(startTime).getTime() : null;
+  const end = endTime ? new Date(endTime).getTime() : null;
+
+  // Filter by timestamp if range provided
+  const filteredData = data.filter(row => {
+    const ts = new Date(row.timestamp).getTime();
+    return (!start || ts >= start) && (!end || ts <= end);
+  });
+
+  if (!filteredData.length) return;
+
+  const headers = Object.keys(filteredData[0]);
+  const rows = filteredData.map(row =>
+    headers.map(h => JSON.stringify(row[h] ?? ""))
+  );
 
   const csvContent = [headers, ...rows].map(e => e.join(",")).join("\n");
   const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });

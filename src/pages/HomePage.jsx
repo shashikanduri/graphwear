@@ -108,7 +108,6 @@ const WaterSystemPage = () => {
     const latestData = sensorData
       .filter((d) => d.sensor_id === sensorId)
       .at(-1);
-    console.log(latestData);
 
     const chartData = sensorData.filter((d) => d.sensor_id === sensorId);
   

@@ -108,6 +108,7 @@ const WaterSystemPage = () => {
     const latestData = sensorData
       .filter((d) => d.sensor_id === sensorId)
       .at(-1);
+    console.log(latestData);
 
     const chartData = sensorData.filter((d) => d.sensor_id === sensorId);
   
@@ -229,17 +230,17 @@ const WaterSystemPage = () => {
                 series={[
                   {
                     data: getSensorSeries(sensorId, "ohm1"),
-                    label: "Lactate - Channel 1",
+                    label: `Lactate - Channel 1 : ${latestData.ohm1}`,
                     showMark: false,
                   },
                   {
                     data: getSensorSeries(sensorId, "ohm2"),
-                    label: "Lactate - Channel 2",
+                    label: `Lactate - Channel 2 : ${latestData.ohm2}`,
                     showMark: false,
                   },
                   {
                     data: getSensorSeries(sensorId, "ohm3"),
-                    label: "Lactate - Channel 3",
+                    label: `Lactate - Channel 3 : ${latestData.ohm3}`,
                     showMark: false,
                   },
                 ]}

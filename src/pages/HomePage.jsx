@@ -26,7 +26,6 @@ const WaterSystemPage = () => {
   const [endTime, setEndTime] = useState(null);
   const [combineCharts, setCombineCharts] = useState(false)
   
-  
   // useEffect
   useEffect(() => {
 
@@ -366,13 +365,13 @@ const WaterSystemPage = () => {
         <MainContainer>
           <p className="text-red-500">Failed to load data.</p>
         </MainContainer>
-      ) : selectedUsers.length === 0 || selectedSensors.length === 0? (
+      ) : selectedUsers.length === 0 || selectedSensors.length === 0 ? (
         <MainContainer>
-          <p className="text-black text-lg pb-10">👋 Select a user to view sensor data.</p>
+          <p className="text-black text-lg pb-10"> Select a user to view sensor data.</p>
         </MainContainer>
       ) : (
         <MainContainer>
-          {selectedSensors.map(renderChartsForSensor)}
+          { sensorData.length > 0 ? selectedSensors.map(renderChartsForSensor) : <p className="text-black text-lg pb-10"> No data to display.</p> }
         </MainContainer>
       )}
     </>

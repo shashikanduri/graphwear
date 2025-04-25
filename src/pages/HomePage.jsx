@@ -20,7 +20,7 @@ const WaterSystemPage = () => {
   const [isError, setIsError] = useState(false);
   const [sensorData, setSensorData] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
-  const [sensorOptions, setSensorOptions] = useState(['Sensor 1', 'Sensor 2']);
+  const sensorOptions = ['Sensor 1', 'Sensor 2'];
   const [selectedSensors, setSelectedSensors] = useState([])
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
@@ -31,10 +31,8 @@ const WaterSystemPage = () => {
 
     if (!selectedUsers) return;
     let unsubscribeSensorData;
-
+    
     if (selectedUsers.length > 0) {
-      // Default to the first two sensors
-      if (selectedSensors.length === 0) setSelectedSensors(sensorOptions);
 
       setIsLoading(true);
   
@@ -135,37 +133,14 @@ const WaterSystemPage = () => {
         
         {/* separate graphs for channels */}
         {
-          !combineCharts && 
-          <div>
-            <div className="w-full overflow-x-auto">
-            <div className="min-w-[800px]">
-              <LineChart
-                margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
-                height={300}
-                series={[{ data: getSensorSeries(sensorId, "ohm1"), label: "Lactate", showMark: false }]}
-                xAxis={[
-                  {
-                    scaleType: "time",
-                    data: getSensorTimestampsAsDates(sensorId),
-                  },
-                ]}
-                tooltip={{
-                  valueFormatter: (value, context) =>
-                    `Time: ${dayjs(context.dataIndex !== undefined ? getSensorTimestampsAsDates(sensorId)[context.dataIndex] : "").format("YYYY-MM-DD HH:mm:ss")}`,
-                }}   
-              />
-            </div>
-            </div>
-            <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 1)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
-      
-            <hr className="border-t border-gray-300 my-8 w-full" />
-      
-            <div className="w-full overflow-x-auto">
+          !combineCharts ? (
+            <div>
+              <div className="w-full overflow-x-auto">
               <div className="min-w-[800px]">
                 <LineChart
                   margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
                   height={300}
-                  series={[{ data: getSensorSeries(sensorId, "ohm3"), label: "Lactate", showMark: false }]}
+                  series={[{ data: getSensorSeries(sensorId, "ohm1"), label: "Lactate", showMark: false }]}
                   xAxis={[
                     {
                       scaleType: "time",
@@ -178,83 +153,99 @@ const WaterSystemPage = () => {
                   }}   
                 />
               </div>
+              </div>
+              <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 1)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
+        
+              <hr className="border-t border-gray-300 my-8 w-full" />
+        
+              <div className="w-full overflow-x-auto">
+                <div className="min-w-[800px]">
+                  <LineChart
+                    margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
+                    height={300}
+                    series={[{ data: getSensorSeries(sensorId, "ohm3"), label: "Lactate", showMark: false }]}
+                    xAxis={[
+                      {
+                        scaleType: "time",
+                        data: getSensorTimestampsAsDates(sensorId),
+                      },
+                    ]}
+                    tooltip={{
+                      valueFormatter: (value, context) =>
+                        `Time: ${dayjs(context.dataIndex !== undefined ? getSensorTimestampsAsDates(sensorId)[context.dataIndex] : "").format("YYYY-MM-DD HH:mm:ss")}`,
+                    }}   
+                  />
+                </div>
+              </div>
+              <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 2)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
+        
+              <hr className="border-t border-gray-300 my-8 w-full" />
+        
+              <div className="w-full overflow-x-auto">
+                <div className="min-w-[800px]">
+                  <LineChart
+                    margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
+                    height={300}
+                    series={[{ data: getSensorSeries(sensorId, "ohm3"), label: "Lactate", showMark: false }]}
+                    xAxis={[
+                      {
+                        scaleType: "time",
+                        data: getSensorTimestampsAsDates(sensorId),
+                      },
+                    ]}
+                    tooltip={{
+                      valueFormatter: (value, context) =>
+                        `Time: ${dayjs(context.dataIndex !== undefined ? getSensorTimestampsAsDates(sensorId)[context.dataIndex] : "").format("YYYY-MM-DD HH:mm:ss")}`,
+                    }}        
+                  />
+                </div>
+              </div>
+              <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 3)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
             </div>
-            <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 2)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
-      
-            <hr className="border-t border-gray-300 my-8 w-full" />
-      
+          )
+          :
+          (
             <div className="w-full overflow-x-auto">
               <div className="min-w-[800px]">
                 <LineChart
                   margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
-                  height={300}
-                  series={[{ data: getSensorSeries(sensorId, "ohm3"), label: "Lactate", showMark: false }]}
+                  height={350}
                   xAxis={[
                     {
                       scaleType: "time",
                       data: getSensorTimestampsAsDates(sensorId),
                     },
                   ]}
+                  series={[
+                    {
+                      data: getSensorSeries(sensorId, "ohm1"),
+                      label: `Lactate - Channel 1 : ${latestData.ohm1}`,
+                      showMark: false,
+                    },
+                    {
+                      data: getSensorSeries(sensorId, "ohm2"),
+                      label: `Lactate - Channel 2 : ${latestData.ohm2}`,
+                      showMark: false,
+                    },
+                    {
+                      data: getSensorSeries(sensorId, "ohm3"),
+                      label: `Lactate - Channel 3 : ${latestData.ohm3}`,
+                      showMark: false,
+                    },
+                  ]}
                   tooltip={{
                     valueFormatter: (value, context) =>
-                      `Time: ${dayjs(context.dataIndex !== undefined ? getSensorTimestampsAsDates(sensorId)[context.dataIndex] : "").format("YYYY-MM-DD HH:mm:ss")}`,
-                  }}        
+                      `Time: ${dayjs(
+                        context.dataIndex !== undefined
+                          ? getSensorTimestampsAsDates(sensorId)[context.dataIndex]
+                          : ""
+                      ).format("YYYY-MM-DD HH:mm:ss")}`,
+                  }}
                 />
               </div>
             </div>
-            <h3 className="text-lg text-black mt-8 pb-4 text-center"><b>Lactate (Channel 3)</b> : <b className="pb-4 text-green-600">{latestData?.ohm1 ?? ""}</b></h3>
-          </div>
-
-          
-        }
-
-
-        {/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */}
-        
-        {/* combined into one */}
-        {
-          combineCharts && 
-          <div className="w-full overflow-x-auto">
-            <div className="min-w-[800px]">
-              <LineChart
-                margin={{ left: 0, top: 20, right: 20, bottom: 30 }}
-                height={350}
-                xAxis={[
-                  {
-                    scaleType: "time",
-                    data: getSensorTimestampsAsDates(sensorId),
-                  },
-                ]}
-                series={[
-                  {
-                    data: getSensorSeries(sensorId, "ohm1"),
-                    label: `Lactate - Channel 1 : ${latestData.ohm1}`,
-                    showMark: false,
-                  },
-                  {
-                    data: getSensorSeries(sensorId, "ohm2"),
-                    label: `Lactate - Channel 2 : ${latestData.ohm2}`,
-                    showMark: false,
-                  },
-                  {
-                    data: getSensorSeries(sensorId, "ohm3"),
-                    label: `Lactate - Channel 3 : ${latestData.ohm3}`,
-                    showMark: false,
-                  },
-                ]}
-                tooltip={{
-                  valueFormatter: (value, context) =>
-                    `Time: ${dayjs(
-                      context.dataIndex !== undefined
-                        ? getSensorTimestampsAsDates(sensorId)[context.dataIndex]
-                        : ""
-                    ).format("YYYY-MM-DD HH:mm:ss")}`,
-                }}
-              />
-            </div>
-          </div>
-        }
-
+          )
+  }
 
       </React.Fragment>
     );
@@ -365,15 +356,15 @@ const WaterSystemPage = () => {
         <MainContainer>
           <p className="text-red-500">Failed to load data.</p>
         </MainContainer>
-      ) : selectedUsers.length === 0 || selectedSensors.length === 0 ? (
-        <MainContainer>
-          <p className="text-black text-lg pb-10"> Select a user to view sensor data.</p>
-        </MainContainer>
-      ) : (
-        <MainContainer>
-          { sensorData.length > 0 ? selectedSensors.map(renderChartsForSensor) : <p className="text-black text-lg pb-10"> No data to display.</p> }
-        </MainContainer>
-      )}
+      ) : selectedUsers.length === 0? (
+          <MainContainer>
+            <p className="text-black text-lg pb-10"> Select a user to view sensor data.</p>
+          </MainContainer>
+        ) : (
+          <MainContainer>
+            { sensorData.length > 0 && selectedSensors.length > 0 ? selectedSensors.map(renderChartsForSensor) : <p className="text-black text-lg pb-10"> No data to display.</p> }
+          </MainContainer>
+        )}
     </>
   );
 };

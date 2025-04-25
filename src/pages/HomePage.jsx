@@ -216,23 +216,26 @@ const WaterSystemPage = () => {
           </FormControl>
 
           {/* Sensor ID Filter */}
-          <FormControl sx={{ minWidth: 250 }}>
-            <InputLabel>Sensor ID</InputLabel>
-            <Select
-              multiple
-              value={selectedSensors}
-              onChange={(e) => setSelectedSensors(e.target.value)}
-              input={<OutlinedInput label="Sensor ID" />}
-              renderValue={(selected) => selected.join(', ')}
-            >
-              {sensorOptions.map((sensor) => (
-                <MenuItem key={sensor} value={sensor}>
-                  <Checkbox checked={selectedSensors.includes(sensor)} />
-                  <ListItemText primary={sensor} />
-                </MenuItem>
-              ))}
-            </Select>
+          {
+            selectedUsers.length > 0 &&
+            <FormControl sx={{ minWidth: 250 }}>
+              <InputLabel>Sensor ID</InputLabel>
+              <Select
+                multiple
+                value={selectedSensors}
+                onChange={(e) => setSelectedSensors(e.target.value)}
+                input={<OutlinedInput label="Sensor ID" />}
+                renderValue={(selected) => selected.join(', ')}
+              >
+                {sensorOptions.map((sensor) => (
+                  <MenuItem key={sensor} value={sensor}>
+                    <Checkbox checked={selectedSensors.includes(sensor)} />
+                    <ListItemText primary={sensor} />
+                  </MenuItem>
+                ))}
+              </Select>
           </FormControl>
+          }
         </div>
 
         <button
@@ -255,7 +258,7 @@ const WaterSystemPage = () => {
         <MainContainer>
           <p className="text-red-500">Failed to load data.</p>
         </MainContainer>
-      ) : selectedUsers.length === 0 ? (
+      ) : selectedUsers.length === 0 || selectedSensors.length === 0? (
         <MainContainer>
           <p className="text-black text-lg pb-10">👋 Select a user to view sensor data.</p>
         </MainContainer>

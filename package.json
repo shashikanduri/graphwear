@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@mui/material": "^7.0.2",
+    "@mui/x-charts": "^8.1.0",
     "@mui/x-date-pickers": "^8.1.0",
     "axios": "^1.5.0",
     "dayjs": "^1.11.13",

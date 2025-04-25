@@ -24,7 +24,7 @@ const WaterSystemPage = () => {
   const [selectedSensors, setSelectedSensors] = useState([])
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
-  const [combineCharts, setCombineCharts] = useState(true)
+  const [combineCharts, setCombineCharts] = useState(false)
   
   
   // useEffect
